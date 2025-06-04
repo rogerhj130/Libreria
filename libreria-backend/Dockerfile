@@ -1,12 +1,14 @@
-# Etapa de construcción
-FROM maven:3.8.4-openjdk-17 AS build
-WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
+# Usa una imagen base con Java 17
+FROM eclipse-temurin:17-jdk-alpine
 
-# Etapa de producción
-FROM openjdk:17-jdk-slim
+# Directorio de trabajo en el contenedor
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+
+# Copia el archivo JAR desde tu entorno local al contenedor
+COPY target/users-backend-0.0.1-SNAPSHOT.jar app.jar
+
+# Expone el puerto 8080
 EXPOSE 8080
+
+# Comando para ejecutar el JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]
