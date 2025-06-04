@@ -1,0 +1,26 @@
+# --- BACKEND: Spring Boot ---
+/**/target/
+*.log
+*.class
+*.jar
+*.war
+*.iml
+
+# Archivos de configuración de IDE
+.idea/
+*.iws
+*.ipr
+*.iml
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
+
+# --- FRONTEND: Angular ---
+/**/node_modules/
+/**/dist/
+/**/.angular/cache/
+
+# --- Otros ---
+.env
+.vscode/
